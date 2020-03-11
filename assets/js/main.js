@@ -25,22 +25,22 @@
 
 (function (window, $, _, Fiber, Fuse, hljs, gtag) {
   $(function (window) {
-  // function handleExperiments () {
-  //   // Define JavaScript for each page variation of this experiment.
-  //   var pageVariations = [
-  //     function () { // Original
-  //       $('#exp-original').show()
-  //     },
-  //     function () { // Variation 1
-  //       $('#exp-variation-1').show()
-  //     }
-  //   ]
-  //   // Execute the chosen view
-  //   pageVariations[chosenVariation]()
-  //   $('#newsletter-form').show()
-  // }
+    // function handleExperiments () {
+    //   // Define JavaScript for each page variation of this experiment.
+    //   var pageVariations = [
+    //     function () { // Original
+    //       $('#exp-original').show()
+    //     },
+    //     function () { // Variation 1
+    //       $('#exp-variation-1').show()
+    //     }
+    //   ]
+    //   // Execute the chosen view
+    //   pageVariations[chosenVariation]()
+    //   $('#newsletter-form').show()
+    // }
 
-  // handleExperiments()
+    // handleExperiments()
 
     // var cookie = getCookie('subscription')
     // if (cookie !== 'closed' && cookie !== 'subscribed') {
@@ -55,7 +55,7 @@
     //   })
     // }
 
-  // Mixins
+    // Mixins
     var Mixins = {}
     Mixins.Event = function (base) {
       return {
@@ -80,7 +80,7 @@
       }
     }
 
-  // Core
+    // Core
     var App = {}
 
     App.Options = Fiber.extend(function () {
@@ -109,7 +109,8 @@
           this.$scoreCheckbox = $('#scoreCheckbox')
           this.$matchesCheckbox = $('#matchesCheckbox')
           this.$sortCheckbox = $('#sortCheckbox')
-          this.$tokenizeCheckbox = $('#tokenizeCheckbox')
+          // this.$tokenizeCheckbox = $('#tokenizeCheckbox')
+          this.$useExtendedSearchCheckbox = $('#useExtendedSearchCheckbox')
           this.$matchAllTokensCheckbox = $('#matchAllTokensCheckbox')
           this.$identifierTextbox = $('#identifierTextbox')
 
@@ -127,18 +128,21 @@
           }, {
             node: this.$sortCheckbox,
             name: 'shouldSort'
-          }, {
+          }/*, {
             node: this.$tokenizeCheckbox,
             name: 'tokenize'
-          }, {
+          }*/, {
             node: this.$matchAllTokensCheckbox,
             name: 'matchAllTokens'
           }, {
-            node: this.$findAllMatchesCheckbox,
-            name: 'findAllMatches'
+            node: this.$useExtendedSearchCheckbox,
+            name: 'useExtendedSearch'
           }, {
             node: this.$scoreCheckbox,
             name: 'includeScore'
+          }, {
+            node: this.$matchAllTokensCheckbox,
+            name: 'matchAllTokens'
           }, {
             node: this.$matchesCheckbox,
             name: 'includeMatches'
@@ -159,14 +163,14 @@
           }]
         },
         bindEvents: function () {
-        // Checkboxes
+          // Checkboxes
           _.each(this.checkboxItems, _.bind(function (item) {
             item.node.on('change', _.bind(function () {
               this.setupCheckboxItems(item, true)
             }, this))
           }, this))
 
-        // Ranges
+          // Ranges
           _.each(this.rangeItems, _.bind(function (item) {
             item.node.on('change', _.bind(function () {
               this.setupRangeItems(item, true)
@@ -175,13 +179,13 @@
 
           this.$identifierTextbox.on('change', _.bind(this.setupIdentifier, this))
 
-        // keys
+          // keys
           this.$keysTextbox.on('change', _.bind(this.setupKeys, this))
 
-        // Pattern length
+          // Pattern length
           this.$maxPatternLength.on('change', _.bind(this.setupPatternLength, this))
 
-        // Google events
+          // Google events
           this.$caseSensitiveCheckbox.on('change', function () {
             gtag('event', 'change', {
               'event_category': 'Demo',
@@ -206,10 +210,16 @@
               'event_label': 'option:sort'
             })
           })
-          this.$tokenizeCheckbox.on('change', function () {
+          // this.$tokenizeCheckbox.on('change', function () {
+          //   gtag('event', 'change', {
+          //     'event_category': 'Demo',
+          //     'event_label': 'option:tokenize'
+          //   })
+          // })
+          this.$useExtendedSearchCheckbox.on('change', function () {
             gtag('event', 'change', {
               'event_category': 'Demo',
-              'event_label': 'option:tokenize'
+              'event_label': 'option:used-extended-search'
             })
           })
           this.$matchAllTokensCheckbox.on('change', function () {
@@ -351,14 +361,17 @@
           if (this.options.data.shouldSort) {
             arr.push('  shouldSort: ' + this.options.data.shouldSort + ',')
           }
-          if (this.options.data.tokenize) {
-            arr.push('  tokenize: ' + this.options.data.tokenize + ',')
-          }
+          // if (this.options.data.tokenize) {
+          //   arr.push('  tokenize: ' + this.options.data.tokenize + ',')
+          // }
           if (this.options.data.matchAllTokens) {
             arr.push('  matchAllTokens: ' + this.options.data.matchAllTokens + ',')
           }
           if (this.options.data.findAllMatches) {
             arr.push('  findAllMatches: ' + this.options.data.findAllMatches + ',')
+          }
+          if (this.options.data.useExtendedSearch) {
+            arr.push('  useExtendedSearch: ' + this.options.data.useExtendedSearch + ',')
           }
           if (this.options.data.includeScore) {
             arr.push('  includeScore: ' + this.options.data.includeScore + ',')

@@ -87,6 +87,9 @@
                   <a href="#examples"><i class="fas fa-list-ul"></i> Examples</a>
                 </li>
                 <li>
+                  <a href="#extended-search"><i class="fas fa-search"></i> Extended Search</a>
+                </li>
+                <li>
                   <a href="#support"><i class="fas fa-donate"></i> Support</a>
                 </li>
                 <li>
@@ -418,14 +421,14 @@
                             </div>
                           </div>
 
-                          <div class="form-group">
+                          <!-- <div class="form-group">
                             <div class="checkbox">
                               <label>
                                 <input type="checkbox" id="tokenizeCheckbox">Tokenize
                               </label>
                               <span id="helpBlock" class="help-block">When <code>true</code>, the algorithm will search individual words <strong>and</strong> the full string, computing the final score as a function of both. In this case, the <code>threshold</code>, <code>distance</code>, and <code>location</code> are inconsequential for individual tokens, and are thus ignored.</span>
                             </div>
-                          </div>
+                          </div> -->
 
                           <div class="form-group">
                             <div class="checkbox">
@@ -444,6 +447,16 @@
                               <span id="helpBlock" class="help-block">When <code>true</code>, the matching function will continue to the end of a search pattern even if a perfect match has already been located in the string.</span>
                             </div>
                           </div>
+
+                          <div class="form-group">
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" id="useExtendedSearchCheckbox">Use extended search
+                              </label>
+                              <span id="helpBlock" class="help-block">When <code>true</code>, it enables the use of unix-like search commands. See <a href="#extended-search">example</a>.</span>
+                            </div>
+                          </div>
+
 
                           <div class="form-group form-inline">
                             <label for="identifierTextbox">ID</label>
@@ -714,7 +727,114 @@ fuse.search('engsh')</code></pre>
                     </div>
                 </div>
 
-                <h3 id="using-in-typescript">Using in TypeScript</h3>
+            <div class="section">
+
+                <h2 id="extended-search">
+                  <a class="headline-link" href="#extended-search">#</a>
+                  Extended Search
+                </h2>
+
+                <p>This form of advanced searching allows you to fine-tune results.</p>
+
+                <p>White space acts as an <code>AND</code> operator, while a single pipe (<code>|</code>) character acts as an <code>OR</code> operator.</p>
+                <br />
+
+                <div>
+
+                  <table>
+                    <thead>
+                    <tr>
+                    <th>Token</th>
+                    <th>Match type</th>
+                    <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td><code>jscript</code></td>
+                    <td>fuzzy-match</td>
+                    <td>Items that match <code>jscript</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>'python</code></td>
+                    <td>exact-match</td>
+                    <td>Items that include <code>python</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>!ruby</code></td>
+                    <td>inverse-exact-match</td>
+                    <td>Items that do not include <code>ruby</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>^java</code></td>
+                    <td>prefix-exact-match</td>
+                    <td>Items that start with <code>java</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>!^earlang</code></td>
+                    <td>inverse-prefix-exact-match</td>
+                    <td>Items that do not start with <code>earlang</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>.js$</code></td>
+                    <td>suffix-exact-match</td>
+                    <td>Items that end with <code>.js</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>!.go$</code></td>
+                    <td>inverse-suffix-exact-match</td>
+                    <td>Items that do not end with <code>.go</code></td>
+                    </tr>
+                    </tbody>
+                    </table>
+</div>
+
+<h3 id="searching-in-arrays-of-objects">Multiple search terms</h3>
+
+<div class="row" >
+  <div class="col-md-4">
+<pre><code class="javascript">var books = [{
+  'title': "Old Man's War",
+  'author': 'John Scalzi',
+  }, {
+  'title': 'The Lock Artist',
+  'author': 'Steve',
+}, {
+  'title': 'Artist for Life',
+  'author': 'Michelangelo',
+}]</code></pre>
+    <div class="operation">+</div>
+  </div>
+  <div class="col-md-4">
+<pre><code>var options = {
+  keys: ['author']
+};
+
+var fuse = new Fuse(books, options)
+fuse.search("'Man 'Old | Artist$")</code></pre>
+    <div class="operation">=</div>
+  </div>
+  <div class="col-md-4">
+<pre><code>[{
+  "title": "Old Man's War",
+  "author": {
+    "firstName": "John",
+    "lastName": "Scalzi"
+  }
+},{
+  "title": "The Lock Artist",
+  "author": {
+    "firstName": "Steve",
+    "lastName": "Hamilton"
+  }
+}]</code></pre>
+  </div>
+</div>
+
+</div>
+
+
+                <!-- <h3 id="using-in-typescript">Using in TypeScript</h3>
 
 
                 <div class="row" >
@@ -779,7 +899,7 @@ results[0].ti... => suggested to expand to title
                     </div>
                 </div>
 
-            </div>
+            </div> -->
 
             <div id="support-container" class="section">
 
