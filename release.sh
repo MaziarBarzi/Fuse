@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-cd assets/js
-curl -O https://raw.githubusercontent.com/krisk/Fuse/master/dist/fuse.js
-mv fuse.js fuse.min.js
-
 on_ghpages_branch () {
   [[ $(git symbolic-ref --short -q HEAD) == "gh-pages" ]] && return 0
   return 1

@@ -83,7 +83,7 @@ pre.small {
 }
 
 #sidebar {
-  width: 255px;
+  width: 277px;
   position: fixed;
   top: 0;
   left: 0;
@@ -96,7 +96,7 @@ pre.small {
 }
 
 #sidebar.active {
-  margin-left: -255px;
+  margin-left: -277px;
 }
 
 #sidebar .sidebar-header {
@@ -186,7 +186,7 @@ a.article:hover {
 ----------------------------------------------------- */
 
 #content {
-  width: calc(100% - 255px);
+  width: calc(100% - 277px);
   padding: 40px;
   min-height: 100vh;
   transition: all 0.3s;
@@ -426,9 +426,9 @@ a.article:hover {
 
 #newsletter-bar {
   position: fixed;
-  left: 255px;
+  left: 277px;
   bottom: -58px;
-  width: calc(100% - 255px);
+  width: calc(100% - 277px);
   margin: 0;
   z-index: 10000;
   transition: all 0.3s;
@@ -527,7 +527,7 @@ a.article:hover {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -255px;
+    margin-left: -277px;
   }
   #sidebar.active {
     margin-left: 0;
@@ -537,7 +537,7 @@ a.article:hover {
     padding-top: 0px;
   }
   #content.active {
-    width: calc(100% - 255px);
+    width: calc(100% - 277px);
   }
   #sidebarCollapse span {
     display: none;

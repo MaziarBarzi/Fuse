@@ -102,7 +102,7 @@
 
           this.setupIdentifier(false)
 
-          this.setupPatternLength(false)
+          // this.setupPatternLength(false)
         },
         setupNodes: function () {
           this.$caseSensitiveCheckbox = $('#caseSensitiveCheckbox')
@@ -111,13 +111,13 @@
           this.$sortCheckbox = $('#sortCheckbox')
           // this.$tokenizeCheckbox = $('#tokenizeCheckbox')
           this.$useExtendedSearchCheckbox = $('#useExtendedSearchCheckbox')
-          this.$matchAllTokensCheckbox = $('#matchAllTokensCheckbox')
+          // this.$matchAllTokensCheckbox = $('#matchAllTokensCheckbox')
           this.$identifierTextbox = $('#identifierTextbox')
 
           this.$locationRange = $('#locationRange')
           this.$thresholdRange = $('#thresholdRange')
           this.$distanceRange = $('#distanceRange')
-          this.$maxPatternLength = $('#maxPatternLength')
+          // this.$maxPatternLength = $('#maxPatternLength')
           this.$keysTextbox = $('#keysTextbox')
           this.$minMatchCharLengthRange = $('#minMatchCharLengthTextbox')
           this.$findAllMatchesCheckbox = $('#findAllMatchesCheckbox')
@@ -131,19 +131,19 @@
           }/*, {
             node: this.$tokenizeCheckbox,
             name: 'tokenize'
-          }*/, {
+          }, {
             node: this.$matchAllTokensCheckbox,
             name: 'matchAllTokens'
-          }, {
+          }*/, {
             node: this.$useExtendedSearchCheckbox,
             name: 'useExtendedSearch'
           }, {
             node: this.$scoreCheckbox,
             name: 'includeScore'
-          }, {
+          }/*, {
             node: this.$matchAllTokensCheckbox,
             name: 'matchAllTokens'
-          }, {
+          }*/, {
             node: this.$matchesCheckbox,
             name: 'includeMatches'
           }]
@@ -183,7 +183,7 @@
           this.$keysTextbox.on('change', _.bind(this.setupKeys, this))
 
           // Pattern length
-          this.$maxPatternLength.on('change', _.bind(this.setupPatternLength, this))
+          // this.$maxPatternLength.on('change', _.bind(this.setupPatternLength, this))
 
           // Google events
           this.$caseSensitiveCheckbox.on('change', function () {
@@ -222,12 +222,12 @@
               'event_label': 'option:used-extended-search'
             })
           })
-          this.$matchAllTokensCheckbox.on('change', function () {
-            gtag('event', 'change', {
-              'event_category': 'Demo',
-              'event_label': 'option:match-all-tokens'
-            })
-          })
+          // this.$matchAllTokensCheckbox.on('change', function () {
+          //   gtag('event', 'change', {
+          //     'event_category': 'Demo',
+          //     'event_label': 'option:match-all-tokens'
+          //   })
+          // })
           this.$identifierTextbox.on('change', function () {
             gtag('event', 'change', {
               'event_category': 'Demo',
@@ -279,14 +279,14 @@
           if (trigger) {
             this.trigger('change')
           }
-        },
-        setupPatternLength: function (trigger) {
-          var value = this.$maxPatternLength.val()
-          this.data['maxPatternLength'] = parseInt(value)
-          if (trigger || trigger === undefined) {
-            this.trigger('change')
-          }
         }
+        // setupPatternLength: function (trigger) {
+        //   var value = this.$maxPatternLength.val()
+        //   this.data['maxPatternLength'] = parseInt(value)
+        //   if (trigger || trigger === undefined) {
+        //     this.trigger('change')
+        //   }
+        // }
       }
     })
     Fiber.mixin(App.Options, Mixins.Event)
@@ -337,10 +337,10 @@
           this.search(this.$searchTextbox.val())
         },
         search: function (pattern) {
-          if (pattern.length > this.options.data.maxPatternLength) {
-            this.$resultTextArea.html('Pattern length is too long')
-            return
-          }
+          // if (pattern.length > this.options.data.maxPatternLength) {
+          //   this.$resultTextArea.html('Pattern length is too long')
+          //   return
+          // }
           this.pattern = pattern
           var start = new Date().getTime()
           var result = this.fuse.search(pattern)
@@ -364,9 +364,9 @@
           // if (this.options.data.tokenize) {
           //   arr.push('  tokenize: ' + this.options.data.tokenize + ',')
           // }
-          if (this.options.data.matchAllTokens) {
-            arr.push('  matchAllTokens: ' + this.options.data.matchAllTokens + ',')
-          }
+          // if (this.options.data.matchAllTokens) {
+          //   arr.push('  matchAllTokens: ' + this.options.data.matchAllTokens + ',')
+          // }
           if (this.options.data.findAllMatches) {
             arr.push('  findAllMatches: ' + this.options.data.findAllMatches + ',')
           }
@@ -382,7 +382,7 @@
           arr.push('  threshold: ' + this.options.data.threshold + ',')
           arr.push('  location: ' + this.options.data.location + ',')
           arr.push('  distance: ' + this.options.data.distance + ',')
-          arr.push('  maxPatternLength: ' + this.options.data.maxPatternLength + ',')
+          // arr.push('  maxPatternLength: ' + this.options.data.maxPatternLength + ',')
           arr.push('  minMatchCharLength: ' + this.options.data.minMatchCharLength + ',')
           if (this.options.data.keys) {
             arr.push('  keys: [')
