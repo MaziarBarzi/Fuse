@@ -83,7 +83,7 @@ pre.small {
 }
 
 #sidebar {
-  width: 277px;
+  width: 280px;
   position: fixed;
   top: 0;
   left: 0;
@@ -96,7 +96,7 @@ pre.small {
 }
 
 #sidebar.active {
-  margin-left: -277px;
+  margin-left: -280px;
 }
 
 #sidebar .sidebar-header {
@@ -110,6 +110,7 @@ pre.small {
 
 #sidebar .sidebar-header h4 {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  line-height: 1.2;
 }
 
 /* #sidebar ul.components {
@@ -186,7 +187,7 @@ a.article:hover {
 ----------------------------------------------------- */
 
 #content {
-  width: calc(100% - 277px);
+  width: calc(100% - 280px);
   padding: 40px;
   min-height: 100vh;
   transition: all 0.3s;
@@ -426,9 +427,9 @@ a.article:hover {
 
 #newsletter-bar {
   position: fixed;
-  left: 277px;
+  left: 280px;
   bottom: -58px;
-  width: calc(100% - 277px);
+  width: calc(100% - 280px);
   margin: 0;
   z-index: 10000;
   transition: all 0.3s;
@@ -527,7 +528,7 @@ a.article:hover {
 
 @media (max-width: 768px) {
   #sidebar {
-    margin-left: -277px;
+    margin-left: -280px;
   }
   #sidebar.active {
     margin-left: 0;
@@ -537,7 +538,7 @@ a.article:hover {
     padding-top: 0px;
   }
   #content.active {
-    width: calc(100% - 277px);
+    width: calc(100% - 280px);
   }
   #sidebarCollapse span {
     display: none;
@@ -620,4 +621,9 @@ table th {
 #resultTextAreaContainer {
   max-height: 500px;
   overflow-y: scroll;
+}
+
+#version-text {
+  font-size: 16px;
+  font-weight: bold;
 }
