@@ -797,11 +797,11 @@ fuse.search("'Man 'Old | Artist$")</code></pre>
 
   <div class="row" >
     <div class="col-md-8">
-<pre class="code"><code>const list = [/* list */]
-const keys = [/* keys */]
+<pre class="code"><code>const keys = [/* keys */]
+const list = [/* list */]
 
 // Create the index from the list
-const index = Fuse.createIndex(list, keys)
+const index = Fuse.createIndex(keys, list)
 
 let fuse = new Fuse(list, options, index)
 </code></pre>
