@@ -582,3 +582,42 @@ table th {
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
 }
+
+/* ---------- */
+
+.default-option-value {
+}
+
+.option-label {
+  font-weight: 400 !important;
+}
+
+.fuzzy-options {
+  /* padding: 10px;
+  border: 1px solid grey;
+  border-style: dashed; */
+}
+
+.code {
+  font-size: 12px;
+}
+.weighted-search-code {
+  min-height: 247px;
+}
+
+.searching-arrays-of-strings-code {
+  min-height: 193px;
+}
+
+.searching-arrays-of-objects-code {
+  min-height: 337px;
+}
+
+.multiple-search-terms-code {
+  min-height: 265px;
+}
+
+#resultTextAreaContainer {
+  max-height: 500px;
+  overflow-y: scroll;
+}

@@ -100,19 +100,19 @@
 
           this.setupKeys(false)
 
-          this.setupIdentifier(false)
+          //this.setupIdentifier(false)
 
           // this.setupPatternLength(false)
         },
         setupNodes: function () {
-          this.$caseSensitiveCheckbox = $('#caseSensitiveCheckbox')
+          this.$isCaseSensitiveCheckbox = $('#caseSensitiveCheckbox')
           this.$scoreCheckbox = $('#scoreCheckbox')
           this.$matchesCheckbox = $('#matchesCheckbox')
           this.$sortCheckbox = $('#sortCheckbox')
           // this.$tokenizeCheckbox = $('#tokenizeCheckbox')
           this.$useExtendedSearchCheckbox = $('#useExtendedSearchCheckbox')
           // this.$matchAllTokensCheckbox = $('#matchAllTokensCheckbox')
-          this.$identifierTextbox = $('#identifierTextbox')
+          // this.$identifierTextbox = $('#identifierTextbox')
 
           this.$locationRange = $('#locationRange')
           this.$thresholdRange = $('#thresholdRange')
@@ -123,8 +123,8 @@
           this.$findAllMatchesCheckbox = $('#findAllMatchesCheckbox')
 
           this.checkboxItems = [{
-            node: this.$caseSensitiveCheckbox,
-            name: 'caseSensitive'
+            node: this.$isCaseSensitiveCheckbox,
+            name: 'isCaseSensitive'
           }, {
             node: this.$sortCheckbox,
             name: 'shouldSort'
@@ -177,7 +177,7 @@
             }, this))
           }, this))
 
-          this.$identifierTextbox.on('change', _.bind(this.setupIdentifier, this))
+          // this.$identifierTextbox.on('change', _.bind(this.setupIdentifier, this))
 
           // keys
           this.$keysTextbox.on('change', _.bind(this.setupKeys, this))
@@ -186,7 +186,7 @@
           // this.$maxPatternLength.on('change', _.bind(this.setupPatternLength, this))
 
           // Google events
-          this.$caseSensitiveCheckbox.on('change', function () {
+          this.$isCaseSensitiveCheckbox.on('change', function () {
             gtag('event', 'change', {
               'event_category': 'Demo',
               'event_label': 'option:case-sensitive'
@@ -228,12 +228,12 @@
           //     'event_label': 'option:match-all-tokens'
           //   })
           // })
-          this.$identifierTextbox.on('change', function () {
-            gtag('event', 'change', {
-              'event_category': 'Demo',
-              'event_label': 'option:identifier'
-            })
-          })
+          // this.$identifierTextbox.on('change', function () {
+          //   gtag('event', 'change', {
+          //     'event_category': 'Demo',
+          //     'event_label': 'option:identifier'
+          //   })
+          // })
           this.$keysTextbox.on('change', function () {
             gtag('event', 'change', {
               'event_category': 'Demo',
@@ -267,12 +267,12 @@
             this.trigger('change')
           }
         },
-        setupIdentifier: function (trigger) {
-          this.data.id = this.$identifierTextbox.val()
-          if (trigger) {
-            this.trigger('change')
-          }
-        },
+        // setupIdentifier: function (trigger) {
+        //   this.data.id = this.$identifierTextbox.val()
+        //   if (trigger) {
+        //     this.trigger('change')
+        //   }
+        // },
         setupKeys: function (trigger) {
           var text = this.$keysTextbox.val()
           this.data.keys = eval(text)
@@ -351,12 +351,12 @@
         },
         updateJS: function () {
           var arr = []
-          arr.push('var options = {')
-          if (this.options.data.id) {
-            arr.push('  id: "' + this.options.data.id + '",')
-          }
-          if (this.options.data.caseSensitive) {
-            arr.push('  caseSensitive: ' + this.options.data.caseSensitive + ',')
+          arr.push('let options = {')
+          // if (this.options.data.id) {
+          //   arr.push('  id: "' + this.options.data.id + '",')
+          // }
+          if (this.options.data.isCaseSensitive) {
+            arr.push('  isCaseSensitive: ' + this.options.data.isCaseSensitive + ',')
           }
           if (this.options.data.shouldSort) {
             arr.push('  shouldSort: ' + this.options.data.shouldSort + ',')
@@ -395,8 +395,8 @@
             arr.push('  ]')
           }
           arr.push('};')
-          arr.push('var fuse = new Fuse(list, options); // "list" is the item array')
-          arr.push('var result = fuse.search("' + this.pattern + '");')
+          arr.push('let fuse = new Fuse(list, options); // "list" is the item array')
+          arr.push('let result = fuse.search("' + this.pattern + '");')
           arr = arr.join('\n')
           this.$jsTextArea.html(arr)
           hljs.highlightBlock(this.$jsTextArea[0])

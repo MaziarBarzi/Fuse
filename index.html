@@ -93,6 +93,9 @@
                   <a href="#extended-search"><i class="fas fa-search"></i> Extended Search - <b><i>New!</i></b></a>
                 </li>
                 <li>
+                  <a href="#indexing"><i class="fas fa-database"></i> Indexing - <b><i>New!</i></b></a>
+                </li>
+                <li>
                   <a href="#support"><i class="fas fa-donate"></i> Support</a>
                 </li>
                 <li>
@@ -383,121 +386,102 @@
 
                           <div class="form-group">
                             <div class="checkbox">
-                              <label>
+                              <label class="option-label">
                                 <input type="checkbox" id="caseSensitiveCheckbox"> Case sensitive
                               </label>
+                              <span class="default-option-value">[default: <code>false</code>]</span>
                               <span id="helpBlock" class="help-block">Indicates whether comparisons should be case sensitive.</span>
                             </div>
                           </div>
 
                           <div class="form-group">
                             <div class="checkbox">
-                              <label>
+                              <label class="option-label">
                                 <input type="checkbox" id="scoreCheckbox">Include score
                               </label>
+                              <span class="default-option-value">[default: <code>false</code>]</span>
                               <span id="helpBlock" class="help-block">Whether the score should be included in the result set. A score of <code>0</code> indicates a perfect match, while a score of <code>1</code> indicates a complete mismatch.
                             </div>
                           </div>
 
                           <div class="form-group">
                             <div class="checkbox">
-                              <label>
+                              <label class="option-label">
                                 <input type="checkbox" id="matchesCheckbox">Include matches
                               </label>
+                              <span class="default-option-value"> [default: <code>false</code>]</span>
                               <span id="helpBlock" class="help-block">Whether the matches should be included in the result set. When <code>true</code>, each record in the result set will include the indices of the matched characters: <code>indices: [start, end]</code>. These can consequently be used for highlighting purposes.</span>
                             </div>
                           </div>
 
                           <div class="form-group form-inline">
-                              <label for="minMatchCharLengthTextbox">Minimum character length</label>
+                              <label class="option-label" for="minMatchCharLengthTextbox">Minimum character length</label>
                               <input type="number" id="minMatchCharLengthTextbox" min="0" max="32" value="1">
+                              <span class="default-option-value"> [default: <code>1</code>]</span>
                               <span id="helpBlock" class="help-block">When set to include matches, only the matches whose length exceeds this value will be returned. (For instance, if you want to ignore single character index returns, set to <code>2</code>)</span>
                           </div>
 
                           <div class="form-group">
                             <div class="checkbox">
-                              <label>
+                              <label class="option-label">
                                 <input type="checkbox" id="sortCheckbox" checked="checked">Sort
                               </label>
+                              <span class="default-option-value"> [default: <code>true</code>]</span>
                               <span id="helpBlock" class="help-block">Whether to sort the result list, by score.</span>
                             </div>
                           </div>
 
-                          <!-- <div class="form-group">
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox" id="tokenizeCheckbox">Tokenize
-                              </label>
-                              <span id="helpBlock" class="help-block">When <code>true</code>, the algorithm will search individual words <strong>and</strong> the full string, computing the final score as a function of both. In this case, the <code>threshold</code>, <code>distance</code>, and <code>location</code> are inconsequential for individual tokens, and are thus ignored.</span>
-                            </div>
-                          </div> -->
-
-                          <!-- <div class="form-group">
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox" id="matchAllTokensCheckbox">Match all tokens
-                              </label>
-                              <span id="helpBlock" class="help-block">When <code>true</code>, the result set will only include records that match all tokens. Will only work if <code>tokenize</code> is also <code>true</code>.</span>
-                            </div>
-                          </div> -->
 
                           <div class="form-group">
                             <div class="checkbox">
-                              <label>
+                              <label class="option-label">
                                 <input type="checkbox" id="findAllMatchesCheckbox">Find All Matches
                               </label>
+                              <span class="default-option-value"> [default: <code>false</code>]</span>
                               <span id="helpBlock" class="help-block">When <code>true</code>, the matching function will continue to the end of a search pattern even if a perfect match has already been located in the string.</span>
                             </div>
                           </div>
 
                           <div class="form-group">
                             <div class="checkbox">
-                              <label>
-                                <input type="checkbox" id="useExtendedSearchCheckbox">Use extended search
+                              <label class="option-label">
+                                <input type="checkbox" id="useExtendedSearchCheckbox">Use extended searching
                               </label>
+                              <span class="default-option-value"> [default: <code>false</code>]</span>
                               <span id="helpBlock" class="help-block">When <code>true</code>, it enables the use of unix-like search commands. See <a href="#extended-search">example</a>.</span>
                             </div>
                           </div>
 
-
                           <div class="form-group form-inline">
-                            <label for="identifierTextbox">ID</label>
-                            <input type="text" class="form-control" id="identifierTextbox">
-                            <span id="helpBlock" class="help-block">The name of the identifier property. If specified, the returned result will be a list of the items' identifiers, otherwise it will be a list of the items. See <a href="#searching-by-id">example</a>.</span>
-                          </div>
-
-                          <div class="form-group form-inline">
-                            <label>Keys</label>
+                            <label class="option-label">Keys</label>
                             <br>
-                            <textarea class="form-control" id="keysTextbox" style="min-width: 100%; min-height: 20px">
-["title","author.firstName"]
+                            <textarea class="form-control" id="keysTextbox" style="min-width: 100%; min-height: 20px">["title","author.firstName"]
                             </textarea>
                             <span id="helpBlock" class="help-block">List of properties that will be searched. This supports nested properties, <a href="#weighted-search">weighted search</a>, searching in arrays of <a href="#searching-in-arrays-of-strings">strings</a> and <a href="#searching-in-arrays-of-objects">objects</a></span>
                           </div>
 
-                          <div class="form-group form-inline">
-                            <label for="locationRange">Location</label>
-                            <input type="number" id="locationRange" min="0" max="100" value="0">
-                            <span id="helpBlock" class="help-block">Determines approximately where in the text is the pattern expected to be found.</span>
-                          </div>
+                          <div class="fuzzy-options">
+                            <div class="form-group form-inline">
+                              <label class="option-label" for="locationRange">Location</label>
+                              <input type="number" id="locationRange" min="0" max="100" value="0">
+                              <span class="default-option-value"> [default: <code>0</code>]</span>
+                              <span id="helpBlock" class="help-block">Determines approximately where in the text is the pattern expected to be found.</span>
+                            </div>
 
-                          <div class="form-group form-inline">
-                            <label for="thresholdRange">Threshold</label>
-                            <input type="number" id="thresholdRange" min="0" step="0.1" max="1" value="0.6">
-                            <span id="helpBlock" class="help-block">At what point does the match algorithm give up. A threshold of <code>0.0</code> requires a perfect match (of both letters and location), a threshold of <code>1.0</code> would match anything.</span>
-                          </div>
+                            <div class="form-group form-inline">
+                              <label class="option-label" for="thresholdRange">Threshold</label>
+                              <input type="number" id="thresholdRange" min="0" step="0.1" max="1" value="0.6">
+                              <span class="default-option-value"> [default: <code>0.6</code>]</span>
+                              <span id="helpBlock" class="help-block">At what point does the match algorithm give up. A threshold of <code>0.0</code> requires a perfect match (of both letters and location), a threshold of <code>1.0</code> would match anything.</span>
+                            </div>
 
-                          <div class="form-group form-inline">
-                            <label for="distanceRange">Distance</label>
-                            <input type="number" id="distanceRange" min="0" max="1000" value="100">
-                            <span id="helpBlock" class="help-block">Determines how close the match must be to the fuzzy location (specified by <code>location</code>). An exact letter match which is <code>distance</code> characters away from the fuzzy location would score as a complete mismatch. A <code>distance</code> of <code>0</code> requires the match be at the exact <code>location</code> specified, a <code>distance</code> of <code>1000</code> would require a perfect match to be within <code>800</code> characters of the <code>location</code> to be found using a <code>threshold</code> of <code>0.8</code>.</span>
+                            <div class="form-group form-inline">
+                              <label class="option-label" for="distanceRange">Distance</label>
+                              <input type="number" id="distanceRange" min="0" max="1000" value="100">
+                              <span class="default-option-value"> [default: <code>100</code>]</span>
+                              <span id="helpBlock" class="help-block">Determines how close the match must be to the fuzzy location (specified by <code>location</code>). An exact letter match which is <code>distance</code> characters away from the fuzzy location would score as a complete mismatch. A <code>distance</code> of <code>0</code> requires the match be at the exact <code>location</code> specified, a <code>distance</code> of <code>1000</code> would require a perfect match to be within <code>800</code> characters of the <code>location</code> to be found using a <code>threshold</code> of <code>0.8</code>.</span>
+                            </div>
                           </div>
-
-                          <!-- <div class="form-group form-inline">
-                            <label for="maxPatternLength">Max pattern length</label>
-                            <input type="number" id="maxPatternLength" min="0" max="64" value="32">
-                            <span id="helpBlock" class="help-block">The maximum length of the pattern. The longer the pattern (i.e. the search query), the more intensive the search operation will be. Whenever the pattern exceeds the <code>maxPatternLength</code>, an error will be thrown. Why is this important? Read <a href="https://en.wikipedia.org/wiki/Word_(computer_architecture)#Word_size_choice" alt="word size choice" target="_blank">this</a>.</span>
-                          </div> -->
 
                         </div>
                         <div class="col-md-6">
@@ -520,14 +504,14 @@
 
                           <section id="js">
                           <h4>Here's the JavaScript:</h4>
-<pre>
+<pre class="code">
 <code id="jsTextArea" class="javascript"></code>
 </pre>
                           </section>
 
                           <section id="output">
                             <h4>Your search results:</h4>
-<pre id="resultTextAreaContainer">
+<pre class="code" id="resultTextAreaContainer">
 <code id="resultTextArea" class="nohighlight"></code>
 </pre>
                             <label>Search time:</label>
@@ -573,44 +557,11 @@ $ npm install fuse.js
                       Examples
                     </h2>
 
-                    <h3 id="searching-by-id">Searching by ID</h3>
-
-                    <div class="row">
-                      <div class="col-md-4">
-<pre><code>var books = [{
-  'ISBN': 'A',
-  'title': "Old Man's War",
-  'author': 'John Scalzi'
-}, {
-  'ISBN': 'B',
-  'title': 'The Lock Artist',
-  'author': 'Steve Hamilton'
-}]</code></pre>
-                        <div class="operation">+</div>
-                      </div>
-                    <div class="col-md-4">
-<pre><code class="javascript">var options = {
-  keys: ['title', 'author'],
-  id: 'ISBN'
-}
-var fuse = new Fuse(books, options)
-
-fuse.search('old')</code></pre>
-                      <div class="operation">=</div>
-                    </div>
-                    <div class="col-md-4">
-<pre><code class="javascript">[
-  "A"
-]</code></pre>
-                    </div>
-                  </div>
-
-
                     <h3 id="weighted-search">Weighted search</h3>
 
                     <div class="row" >
                       <div class="col-md-4">
-<pre><code>var books = [{
+<pre class="code weighted-search-code"><code>var books = [{
   title: "Old Man's War fiction",
   author: 'John X',
   tags: ['war']
@@ -622,7 +573,7 @@ fuse.search('old')</code></pre>
                         <div class="operation">+</div>
                       </div>
                       <div class="col-md-4">
-<pre><code class="javascript">var options = {
+<pre class="code weighted-search-code"><code class="javascript">var options = {
   keys: [{
     name: 'title',
     weight: 0.3
@@ -637,7 +588,7 @@ fuse.search('Man')</code></pre>
                         <div class="operation">=</div>
                       </div>
                       <div class="col-md-4">
-<pre><code class="javascript">[{
+<pre class="code weighted-search-code"><code class="javascript">[{
   "title": "Right Ho Jeeves",
   "author": "P.D. Mans",
   "tags": ["fiction", "war"]
@@ -654,7 +605,7 @@ fuse.search('Man')</code></pre>
 
                     <div class="row" >
                       <div class="col-md-4">
-<pre><code class="javascript">var books = [{
+<pre class="code searching-arrays-of-strings-code"><code class="javascript">var books = [{
   'title': "Old Man's War",
   'author': 'John Scalzi',
   'tags': ['fiction']
@@ -666,7 +617,7 @@ fuse.search('Man')</code></pre>
                         <div class="operation">+</div>
                       </div>
                       <div class="col-md-4">
-<pre><code>var options = {
+<pre class="code searching-arrays-of-strings-code"><code>var options = {
   keys: ['author', 'tags']
 };
 var fuse = new Fuse(books, options)
@@ -675,7 +626,7 @@ fuse.search('tion')</code></pre>
                         <div class="operation">=</div>
                       </div>
                       <div class="col-md-4">
-<pre><code>[{
+<pre class="code searching-arrays-of-strings-code"><code>[{
   "title": "Old Man's War",
   "author": "John Scalzi",
   "tags": ["fiction"]
@@ -689,7 +640,7 @@ fuse.search('tion')</code></pre>
 
                 <div class="row" >
                     <div class="col-md-4">
-<pre><code>var books = [{
+<pre class="code searching-arrays-of-objects-code"><code>var books = [{
   'title': "Old Man's War",
   'author': {
     'name': 'John Scalzi',
@@ -709,7 +660,7 @@ fuse.search('tion')</code></pre>
                         <div class="operation">+</div>
                     </div>
                     <div class="col-md-4">
-<pre><code>var options = {
+<pre class="code searching-arrays-of-objects-code"><code>var options = {
   keys: ['author.tags.value'],
 };
 var fuse = new Fuse(books, options)
@@ -718,7 +669,7 @@ fuse.search('engsh')</code></pre>
                         <div class="operation">=</div>
                     </div>
                     <div class="col-md-4">
-<pre><code>[{
+<pre class="code searching-arrays-of-objects-code"><code>[{
   "title": "The Lock Artist",
   "author": {
     "tags": [{
@@ -789,13 +740,13 @@ fuse.search('engsh')</code></pre>
                     </tr>
                     </tbody>
                     </table>
-</div>
+                  </div>
 
 <h3 id="searching-in-arrays-of-objects">Multiple search terms</h3>
 
 <div class="row" >
   <div class="col-md-4">
-<pre><code class="javascript">var books = [{
+<pre class="code multiple-search-terms-code"><code class="javascript">var books = [{
   'title': "Old Man's War",
   'author': 'John Scalzi',
   }, {
@@ -808,7 +759,7 @@ fuse.search('engsh')</code></pre>
     <div class="operation">+</div>
   </div>
   <div class="col-md-4">
-<pre><code>var options = {
+<pre class="code multiple-search-terms-code"><code>var options = {
   keys: ['author']
 };
 
@@ -817,7 +768,7 @@ fuse.search("'Man 'Old | Artist$")</code></pre>
     <div class="operation">=</div>
   </div>
   <div class="col-md-4">
-<pre><code>[{
+<pre class="code multiple-search-terms-code"><code>[{
   "title": "Old Man's War",
   "author": {
     "firstName": "John",
@@ -832,6 +783,32 @@ fuse.search("'Man 'Old | Artist$")</code></pre>
 }]</code></pre>
   </div>
 </div>
+
+</div>
+
+<div class="section">
+
+  <h2 id="indexing">
+    <a class="indexing-link" href="#indexing">#</a>
+    Indexing
+  </h2>
+
+  <p>Fuse will automatically index the table if one isn't provided during instantiation. Alternatively, you can pre-generate the index from the list, and pass it into Fuse:</p>
+
+  <div class="row" >
+    <div class="col-md-8">
+<pre class="code"><code>const list = [/* list */]
+const keys = [/* keys */]
+
+// Create the index from the list
+const index = Fuse.createIndex(list, keys)
+
+let fuse = new Fuse(list, options, index)
+</code></pre>
+  </div>
+</div>
+
+  <p></p>
 
 </div>
 
