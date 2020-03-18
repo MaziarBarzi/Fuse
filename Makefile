@@ -14,8 +14,7 @@ dev:
 
 ## Get latest version of Fuse
 latest:
-	curl -O https://raw.githubusercontent.com/krisk/Fuse/master/dist/fuse.js
-	mv fuse.js assets/js/fuse.min.js
+	./scripts/get-latest.sh
 
 ################################################################################
 # Release
@@ -23,7 +22,7 @@ latest:
 
 ## Build and start the development environment
 release:
-	./release.sh
+	./scripts/release.sh
 
 ################################################################################
 # Help
