@@ -333,7 +333,7 @@
           this.setupFuse()
         },
         setupFuse: function () {
-          this.fuse = new Fuse(this.list, this.options.data)
+          this.fuse = new Fuse.js(this.list, this.options.data)
           this.search(this.$searchTextbox.val())
         },
         search: function (pattern) {
