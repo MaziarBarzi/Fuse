@@ -63,8 +63,8 @@
          <nav id="sidebar">
             <div class="sidebar-header">
                <h3><a href="/">Fuse.js</a>
-<span id="version-text">v5.0.9-beta</span>
-              </h3>
+                  <span id="version-text">v5.0.9-beta</span>
+               </h3>
                <h4>Lightweight fuzzy-search library.<br/>Zero dependencies.</h4>
                <p>By <a href="https://kiro.me" class="author-link">Kiro Risk</a></p>
                <!-- <a class="github-button" href="https://github.com/sponsors/krisk" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-icon="octicon-heart" aria-label="Sponsor @krisk on GitHub">Sponsor</a> -->
@@ -87,13 +87,13 @@
                </li>
                <!-- <li>
                   <a href="#support"><i class="fas fa-donate"></i> Support</a>
-               </li> -->
+                  </li> -->
                <li>
                   <a href="#contact"><i class="fas fa-paper-plane"></i> Contact </a>
                </li>
                <!-- <li>
                   <a href="#hire-me">Looking for professional Javascript help? Let's chat.</a>
-               </li> -->
+                  </li> -->
             </ul>
             <ul class="list-unstyled CTAs">
                <li>
@@ -111,9 +111,9 @@
          <!-- Page Content  -->
          <div id="content">
             <div class="content-header">
-              <h3><a href="/">Fuse.js</a>
-<span id="version-text">v5.0.9-beta</span>
-              </h3>
+               <h3><a href="/">Fuse.js</a>
+                  <span id="version-text">v5.0.9-beta</span>
+               </h3>
                <h4>Lightweight fuzzy-search library. Zero dependencies.</h4>
                <p>By <a href="https://kiro.me" class="author-link">Kiro Risk</a></p>
             </div>
@@ -466,18 +466,121 @@
                   Install
                </h2>
                <h3>CDN</h3>
-               <p>Available on <a id="cdn-link" href="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" target="_blank">cdnjs</a> (see the latest <a href="https://github.com/krisk/Fuse/releases" target="_blank">version on Github</a>).</p>
-               <script>
-                  // Auto-update CDN link
-                  $.getJSON( 'https://api.cdnjs.com/libraries?search=fuse.js' ).done(function (json) {
-                    $('#cdn-link').attr( 'href', json.results[0].latest)
-                  })
-               </script>
+               <p>Available on CDN via <a id="cdn-link" href="https://cdn.jsdelivr.net/npm/fuse.js/dist/" target="_blank">jsDelivr</a> (CDNs take some time to sync so the latest release may not be available yet).</p>
+               <p>See the latest <a href="https://github.com/krisk/Fuse/releases" target="_blank">version on Github</a>.</p>
                <h3>NPM</h3>
                <p>NPM is the recommended installation method. It pairs nicely with a CommonJS module bundler such as <a href="http://webpack.github.io/" target="_blank" rel="external">Webpack</a> or <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a>.</p>
-               <pre class="small"><code class="bash"># latest stable
+               <pre class="small"><code class="bash"># latest
 $ npm install fuse.js
 </code></pre>
+               <h3>Yarn</h3>
+               <pre class="small"><code class="bash"># latest
+$ yarn add fuse.js
+</code></pre>
+               <br/>
+               <h4>Explanation of Build Files</h4>
+               <table>
+                  <thead>
+                     <tr>
+                        <th></th>
+                        <th>UMD</th>
+                        <th>CommonJS</th>
+                        <th>ES Module (for bundlers)</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td><strong>Development</strong></td>
+                        <td>fuse.js</td>
+                        <td>fuse.common.js</td>
+                        <td>fuse.esm.js</td>
+                     </tr>
+                     <tr>
+                        <td><strong>Production</strong></td>
+                        <td>fuse.min.js</td>
+                        <td>-</td>
+                        <td>-</td>
+                     </tr>
+                  </tbody>
+               </table>
+               <br/>
+               <h5>Terms</h5>
+               <ul>
+                  <li>
+                     <p>
+                        <strong>
+                           <a href="https://github.com/umdjs/umd" target="_blank" rel="noopener noreferrer">
+                              UMD
+                              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                                 <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                                 <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                              </svg>
+                           </a>
+                        </strong>
+                        : UMD builds can be used directly in the browser via a <code>&lt;script&gt;</code> tag. The default file from jsDelivr CDN at <i>https://cdn.jsdelivr.net/npm/fuse.js</i> is the UMD build (<code>fuse.js</code>).
+                     </p>
+                  </li>
+                  <li>
+                     <p>
+                        <strong>
+                           <a href="http://wiki.commonjs.org/wiki/Modules/1.1" target="_blank" rel="noopener noreferrer">
+                              CommonJS
+                              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                                 <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                                 <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                              </svg>
+                           </a>
+                        </strong>
+                        : CommonJS builds are intended for use with older bundlers like
+                        <a href="http://browserify.org/" target="_blank" rel="noopener noreferrer">
+                           browserify
+                           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                              <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                              <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                           </svg>
+                        </a>
+                        or
+                        <a href="https://webpack.github.io" target="_blank" rel="noopener noreferrer">
+                           webpack 1
+                           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                              <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                              <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                           </svg>
+                        </a>
+                        . The file for these bundlers (<code>pkg.main</code>) is the CommonJS build (<code>fuse.common.js</code>).
+                     </p>
+                  </li>
+                  <li>
+                     <p>
+                        <strong>
+                           <a href="http://exploringjs.com/es6/ch_modules.html" target="_blank" rel="noopener noreferrer">
+                              ES Module
+                              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                                 <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                                 <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                              </svg>
+                           </a>
+                        </strong>
+                        : Intended for use with modern bundlers like
+                        <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer">
+                           Webpack 2
+                           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                              <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                              <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                           </svg>
+                        </a>
+                        or
+                        <a href="http://rollupjs.org/" target="_blank" rel="noopener noreferrer">
+                           Rollup
+                           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                              <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                              <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                           </svg>
+                        </a>
+                        . The file for these bundlers (<code>pkg.module</code>) is the ES Module build (<code>fuse.esm.js</code>).
+                     </p>
+                  </li>
+               </ul>
             </div>
             <div class="section">
                <h2 id="examples">
@@ -715,7 +818,6 @@ let fuse = new Fuse(list, options, index)
                   </div>
                </div>
             </div>
-
             <!-- <div id="support-container" class="section">
                <h2 id="support">
                   <a class="headline-link" href="#support">#</a>
@@ -746,8 +848,8 @@ let fuse = new Fuse(list, options, index)
                   </div>
 
                </div>
-            </div>
-             -->
+               </div>
+               -->
             <div class="section">
                <h2 id="contact">
                   <a class="headline-link" href="#contact">#</a>
